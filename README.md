@@ -1,4 +1,4 @@
-# MCA
+# 
 
 **-------------------------------------------------------------------LED------------------------------------------------------------------**
 ```
@@ -197,5 +197,94 @@ DelayMs(5);
 
 }
 
+}
+```
+
+#Proteus
+
+**LED Proteus**
+```
+#include <MSP430.h>
+
+int main (void)
+ { 
+   WDTCTL=WDTPW | WDTHOLD;
+   P1DIR=0x01;
+   unsigned int i;
+   while (1)
+   {
+   if (P2IN)
+   {
+  
+   P1OUT=0x00;
+   for(i=0;i<10000;i++);
+   }
+   else
+   {
+    P1OUT=0X01;
+   for(i=0;i<10000;i++);
+   }
+   
+   }
+     
+   return 0;
+ }
+ ```
+ 
+ **Motor**
+ ```
+ #include <MSP430.h>
+void cw(void);
+void acw(void);
+int main (void)
+ { 
+ 
+ P2DIR=0XFF;
+   
+   while (1)
+      {
+      if (P1IN)
+        {
+          cw();
+        }
+      else
+        {
+         acw();
+         }
+       
+      }
+          
+   return 0;
+ }   
+void cw(void)
+{
+  P2OUT=~BIT7;
+  __delay_cycles(100000);
+  P2OUT=BIT6;
+  __delay_cycles(100000);
+}
+void acw(void)
+{
+    P2OUT=BIT7;
+  __delay_cycles(100000);
+  P2OUT=~BIT6;
+  __delay_cycles(100000);
+}
+```
+
+**PWM**
+```
+#include <MSP430.h>
+int main(void)
+ {
+    WDTCTL = WDTPW | WDTHOLD;
+    P1DIR = BIT6; 
+    P1SEL = BIT6; 
+    TA0CCR0 = 1000; 
+    TA0CCTL1 = OUTMOD_7;
+    TA0CCR1 = 750; 
+    TACTL = TASSEL_2 + MC_1; 
+    __bis_SR_register(LPM0_bits); 
+    return 0;
 }
 ```
