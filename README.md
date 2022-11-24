@@ -2,7 +2,7 @@
 
 **-------------------------------------------------------------------LED------------------------------------------------------------------**
 ```
-#include&lt;reg51.h&gt;
+#include <reg51.h>
 void MSDelay(unsigned int);
 void main ()
 {
@@ -17,15 +17,15 @@ MSDelay(250);
 void MSDelay(unsigned int itime)
 {
 unsigned int i,j;
-for(i=0;i&lt;itime;i++)
-for(j=0;j&lt;1000;j++);
+for(i=0;i<itime;i++)
+for(j=0;j<1000;j++);
 }
 ```
 
 **-------------------------------------------------------------------LED WITH TIMER-------------------------------------------------**
 
 ```
-#include&lt;reg51.h&gt;
+#include <reg51.h>
 void MSDelay();
 void main ()
 {
@@ -51,7 +51,7 @@ TF0=0;
 
 **----------------------------------------------------------------------LCD---------------------------------------------------------------**
 ```
-#include &lt;reg51.h&gt;
+#include <reg51.h>;
 sfr ldata = 0x80;
 sbit rs = P3^2;
 sbit rw = P3^1;
@@ -59,8 +59,8 @@ sbit en = P3^3;
 
 void MSDelay(unsigned int itime){
 unsigned int i, j;
-for(i=0; i&lt;itime;i++)
-for(j=0;j&lt;1275;j++);
+for(i=0; i<itime;i++)
+for(j=0;j<1275;j++);
 
 }
 void lcdcmd(unsigned char value) {
@@ -96,30 +96,30 @@ lcdcmd(0x01);
 MSDelay(250);
 lcdcmd(0x80);
 MSDelay(250);
-lcddata(&#39;M&#39;);
+lcddata('M');
 MSDelay(250);
-lcddata(&#39;O&#39;);
+lcddata('O');
 MSDelay(250);
-lcddata(&#39;D&#39;);
+lcddata('D');
 MSDelay(250);
-lcddata(&#39;E&#39;);
+lcddata('E');
 MSDelay(250);
-lcddata(&#39;R&#39;);
+lcddata('R');
 MSDelay(250);
-lcddata(&#39;N&#39;);
+lcddata('N');
 }
 }
 ```
 
 ***--------------------------------------------------------seven segment display-----------------------------------------------------***
 ```
-#include &lt;REG51.h&gt;
+#include <REG51.h>
 const unsigned char Display[10]={0xF6,0x90,0xE5,0xB5,0x93,0x37,0x77,0x94,0xF7,0xB7};
 void delaymS(unsigned char x)
 {
 unsigned int i,j;
-for(i=0;i&lt;x;i++)
-for(j=0;j&lt;1000;j++);
+for(i=0;i<x;i++)
+for(j=0;j<1000;j++);
 }
 void main()
 {
@@ -128,7 +128,7 @@ unsigned char x=1;
 P0 = 0x00;
 while(1)
 {
-for(i=0;i&lt;10;i++)
+for(i=0;i<10;i++)
 {
 P0 = ~Display[i];
 delaymS(100);
@@ -139,14 +139,14 @@ delaymS(100);
 
 **------------------------------------------------Stepper motor clockwise--------------------------------------------------**
 
-```#include &lt;REG51.h&gt;
+```#include <REG51.h>;
 unsigned int STEP[]={8,1,2,4};
 void DelayMs(unsigned int time)
 {
 int i,j;
-for(i=0;i&lt;time;i++)
+for(i=0;i<time;i++)
 {
-for(j=0;j&lt;50;j++);
+for(j=0;j<50;j++);
 }
 }
 void main()
@@ -154,7 +154,7 @@ void main()
 unsigned int i;
 while(1)
 {
-for(i=0;i&lt;=3;i++)
+for(i=0;i<=3;i++)
 
 {
 P1 = (STEP[i]);
@@ -170,14 +170,14 @@ DelayMs(5);
 
 **------------------------------------------------Stepper motor anti-clockwise--------------------------------------------------**
 ```
-#include &lt;REG51.h&gt;
+#include <REG51.h>
 unsigned int STEP[]={8,1,2,4};
 void DelayMs(unsigned int time)
 {
 int i,j;
-for(i=0;i&lt;time;i++)
+for(i=0;i<time;i++)
 {
-for(j=0;j&lt;50;j++);
+for(j=0;j<50;j++);
 }
 }
 
@@ -186,7 +186,7 @@ void main()
 unsigned int i;
 while(1)
 {
-for(i=0;i&lt;=3;i++)
+for(i=0;i<;=3;i++)
 
 {
 P1 = (STEP[3-i]);
